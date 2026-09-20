@@ -1,9 +1,9 @@
 # Makefile modelo para Teoria dos Grafos
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -std=c11 -lm -Iestruturas
+CFLAGS = -Wall -Wextra -Werror -std=c11 -lm
 TARGET = main
-SRC = *.c estruturas/*.c
+SRC = *.c
 OBJ = *.o
 
 all: $(TARGET)

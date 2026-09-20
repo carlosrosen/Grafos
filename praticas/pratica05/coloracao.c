@@ -2,6 +2,42 @@
 #include <stdlib.h>
 #include "coloracao.h"
 
+// Estrutura de fila interna para auxiliar a funcao eh_bipartido
+typedef struct{
+    int *dados;
+    int capacidade, inicio, fim, tamanho;
+} Fila;
+
+Fila* inicializar_fila(int capacidade){
+    Fila *f = (Fila*)malloc(sizeof(Fila));
+    f->dados = (int *)malloc(capacidade * sizeof(int));
+    f->capacidade = capacidade;
+    f->inicio = 0;
+    f->fim = 0;
+    f->tamanho = 0;
+    return f;
+}
+
+void enfileirar(Fila *f, int valor){
+    if(f->tamanho == f->capacidade) return;
+    f->dados[f->fim++] = valor;
+    if (f->fim == f->capacidade) f->fim = 0;
+    f->tamanho++;
+}
+
+int desenfileirar(Fila *f){
+    if(f->tamanho == 0) return -1;
+    int valor = f->dados[f->inicio++];
+    if(f->inicio == f->capacidade) f->inicio = 0;
+    f->tamanho--;
+    return valor;
+}
+
+void liberar_fila(Fila *f){
+    free(f->dados);
+    free(f);
+}
+
 void coloracao_gulosa(GrafoLista *g, int *num_cores){
     int n = g->num_vertices;
     int *cor = (int *)malloc(n * sizeof(int));
