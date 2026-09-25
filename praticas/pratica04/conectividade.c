@@ -33,7 +33,7 @@ void dfs_articulacoes(GrafoLista *g, int u, int pai, int *descoberta, int *low, 
         articulacao = 1;
     }
     if(articulacao){
-        printf("articulacao: %d\n", u);
+        printf("Articulacao: %d\n", u);
     }
 }
 
@@ -51,7 +51,7 @@ void detectar_pontes(GrafoLista *g, int u, int pai, int *descoberta, int *low, i
                 low[u] = low[v];
             }
             if(low[v] > descoberta[u]){
-                printf("ponte: [%d, %d]\n", u, v);
+                printf("Ponte: [%d, %d]\n", u, v);
             }
         } else if(v != pai){
             if(descoberta[v] < low[u]){
